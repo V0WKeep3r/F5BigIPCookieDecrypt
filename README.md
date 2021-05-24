@@ -72,8 +72,8 @@ rabid工具可以解BigIP的cookie，以此获取内网ip或者真实ip地址。
 github地址：https://github.com/Orange-Cyberdefense/rabid
 
 ```http
-GET http://htwxclaim.pc.ehuatai.com/web-console/ HTTP/1.1
-Host: htwxclaim.pc.ehuatai.com
+GET /xxx HTTP/1.1
+Host: xxx
 Cache-Control: max-age=0
 Upgrade-Insecure-Requests: 1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
@@ -85,25 +85,23 @@ Cookie: BIGipServershangxianyidong=1443234058.36895.0000
 Connection: close
 ```
 
-![](media/16208263887101/16208264788337.jpg)
-
 
 ```
 Cookie: BIGipServershangxianyidong=1443234058.36895.0000
 ```
 利用工具`rabid`进行F5 BigIP解码，可以获取真实内网IP地址，如下：
-![](media/16208263887101/16208264238123.jpg)
+![](media/16208264238123.jpg)
 
 ## 修复方案
 在F5设备中，设置cookie加密方法。
-![解决1](media/16218346928127/%E8%A7%A3%E5%86%B31.png)
+![解决1](media/solove1.png)
 
 在创建新HTTP配置文件部分中设置
-![解决2](media/16218346928127/%E8%A7%A3%E5%86%B32.png)
+![解决2](media/solove2.png)
 
 返回到服务器中应用创建的自定义HTTP配置文件
-![解决3](media/16218346928127/%E8%A7%A3%E5%86%B33.png)
+![解决3](media/solove3.png)
 
 做好以上设置后，再来查看数据包中的cookie已使用AES加密，并使用base64进行了编码。
-![解决4](media/16218346928127/%E8%A7%A3%E5%86%B34.png)
+![解决4](media/solove4.png)
 
